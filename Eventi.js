@@ -283,7 +283,7 @@ scalata = {
                 allontana_camera.posizione_i.clone().sub(vett_allont)
             );
         }
-        if(time-this.inizio >= 3000 && sali_1.avviato == false) {
+        if(time-this.inizio >= 1000 && sali_1.avviato == false) {
             sali_1.avviato = true;
             sali_1.inizio = time;
             sali_1.posizione_i.copy(chiocciola.position);
@@ -327,7 +327,7 @@ sali_1 = {
     avviato: false,
     avvenuto: false,
     inizio: -1,
-    durata: 5000,
+    durata: 7000,
     posizione_i: new THREE.Vector3(),
     posizione_f: new THREE.Vector3(),
     s_sforzo1_flag: true,

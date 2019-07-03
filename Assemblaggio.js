@@ -119,9 +119,16 @@ console.log(siepe);
 
 //muro
 var muro = new THREE.Object3D();
-muro = Assembla([[[1],[1]]], [CreaCuboColorato(cube,orange)], muro);
+muro_cube = cube.clone();
+muro_cube.material = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('textures/muro_tex.jpg') } );
+muro.add(muro_cube.clone());
+muro_cube.position.x = 1;
+muro.add(muro_cube.clone());
+muro_cube.position.x = -1;
+muro.add(muro_cube.clone());
+
 muro.scale.multiplyScalar(30);
-muro.scale.x *=2;
+// muro.scale.x *=2.5;
 muro.position.set(6,15,45);
 
 
