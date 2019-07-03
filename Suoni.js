@@ -16,6 +16,13 @@ audioLoader.load( 'sounds/camminata2.mp3', function( buffer ) {
     s_camminata2.setVolume( 0.5 );
 });
 
+s_camminata_f = new THREE.Audio( listener );
+audioLoader.load( 'sounds/camminata.mp3', function( buffer ) {
+    s_camminata_f.setBuffer( buffer );
+    s_camminata_f.setLoop( false );
+    s_camminata_f.setVolume( 0.5 );
+});
+
 s_sforzo1 = new THREE.Audio( listener );
 audioLoader.load( 'sounds/sforzo.mp3', function( buffer ) {
     s_sforzo1.setBuffer( buffer );
@@ -105,5 +112,6 @@ suoni.push(
     s_ohoh,
     s_fallimento,
     s_fallimento2,
-    s_sforzo
+    s_sforzo,
+    s_camminata_f
 )

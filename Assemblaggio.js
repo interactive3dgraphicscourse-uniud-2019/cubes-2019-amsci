@@ -97,7 +97,6 @@ bocca.rotation.y = Math.PI/2;
 bocca.position.set(.3,.2,6.5);
 
 chiocciola.add(guscio, occhi, bocca, asse_chiocciola);
-chiocciola.position.set(8,.5,-10);
 
 // chiocciola 2
 var chiocciola2 = chiocciola.clone();
@@ -105,8 +104,6 @@ var corpo2 = new THREE.Object3D();
 corpo2 = Assembla(corpo_map, [CreaCuboColorato(cube, light_light_brown)], corpo2);
 chiocciola2.add(corpo2);
 chiocciola.add(corpo);
-
-chiocciola2.position.set(100,.5,-10);
 
 
 // siepe

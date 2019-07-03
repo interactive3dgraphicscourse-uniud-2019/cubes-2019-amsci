@@ -19,7 +19,7 @@ function Start() {
     
     camera.position.set(14,5,0);
     var camera_target = new THREE.Vector3(0,0,-10);
-    camera.lookAt(camera_target); // non funziona
+    camera.lookAt(camera_target);
     
     scene.add(nuvola, chiocciola, siepe, muro, chiocciola2);
 

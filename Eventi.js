@@ -62,6 +62,14 @@ titoli_i = {
             this.avvenuto = true;
             renderer.setClearColor("hsl(204, 100%, 60%)");
             renderer.render(scene, camera);
+
+            camera.position.set(14,5,0);
+            var camera_target = new THREE.Vector3(0,0,-10);
+            camera.lookAt(camera_target);
+            chiocciola.position.set(8,.5,-10);
+            chiocciola2.position.set(100,.5,-10);
+
+
             avanzata_iniziale.avviato = true;
             avanzata_iniziale.inizio = time;
             avanzata_iniziale.posizione_i.copy(chiocciola.position);
@@ -763,8 +771,7 @@ camera_finale = {
             this.avvenuto = true;
             pausa_4.inizio = time;
             renderer.setClearColor("hsl(204, 100%, 0%)");
-            s_camminata.setLoop( false );
-            s_camminata.play();
+            s_camminata_f.play();
             document.body.appendChild(scritta_f);
         }
     }
@@ -793,9 +800,6 @@ pausa_4 = {
 eventi.push(pausa_4);
 
 
-
-
-
 ////////////
 termina = {
     avviato: false,
@@ -803,6 +807,21 @@ termina = {
         return this.avviato;
     },
     esegui(){
+        for(var j=0; j<suoni.length-1; j++) if(suoni[j].isPlaying) suoni[j].stop();
+        renderer.setClearColor("hsl(204, 100%, 0%)"); 
+        renderer.render(blank_scene, camera);
+        ResettaEventi();
+        document.getElementById("play").style.visibility = "visible";
         cancelAnimationFrame( ID_animazione );
+    }
+}
+eventi.push(termina);
+
+function ResettaEventi(){
+    for(var i=0; i<eventi.length; i++){
+        eventi[i].avviato = false;
+        eventi[i].avvenuto = false;
+        eventi[i].inizio = -1;
+        eventi[i].riposizionamento = true;
     }
 }
