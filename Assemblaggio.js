@@ -113,9 +113,9 @@ siepe = Assembla(siepe_map, [
     CreaCuboColorato(nos_cube,green_bis),
     CreaCuboColorato(nos_cube,green_ter)
 ], siepe);
-siepe.rotation.y = Math.PI/2;
-siepe.position.set(-8,2,28);
+siepe.position.set(-14,2,-40);
 siepe.scale.multiplyScalar(4);
+console.log(siepe);
 
 //muro
 var muro = new THREE.Object3D();

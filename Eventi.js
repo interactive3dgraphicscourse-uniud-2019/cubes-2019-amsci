@@ -60,7 +60,7 @@ titoli_i = {
         }
         if(time >= this.durata) {
             this.avvenuto = true;
-            renderer.setClearColor("hsl(204, 100%, 60%)");
+            renderer.setClearColor(colore_sfondo);
             renderer.render(scene, camera);
 
             camera.position.set(14,5,0);
@@ -248,7 +248,7 @@ pausa_1 = {
     esegui(){
         if(time-this.inizio>= this.durata) {
             this.avvenuto = true;
-            renderer.setClearColor("hsl(204, 100%, 60%)");
+            renderer.setClearColor(colore_sfondo);
             renderer.render(scene, camera);
             scalata.avviato = true;
             scalata.inizio = time;
@@ -480,7 +480,7 @@ pausa_2 = {
     esegui(){
         if(time-this.inizio>= this.durata) {
             this.avvenuto = true;
-            renderer.setClearColor("hsl(204, 100%, 60%)");
+            renderer.setClearColor(colore_sfondo);
             renderer.render(scene, camera);
             sforzo_1.avviato = true;
             sforzo_1.inizio = time;
@@ -680,8 +680,10 @@ pausa_3 = {
     esegui(){
         if(time-this.inizio>= this.durata) {
             this.avvenuto = true;
-            renderer.setClearColor("hsl(204, 100%, 60%)");
+            renderer.setClearColor(colore_sfondo);
             renderer.render(scene, camera);
+            //scene.fog = new THREE.Fog( colore_sfondo, 20, 30 );
+
             avanzata_finale.avviato = true;
             avanzata_finale.inizio = time;
             avanzata_finale.posizione_i.copy(chiocciola.position);
