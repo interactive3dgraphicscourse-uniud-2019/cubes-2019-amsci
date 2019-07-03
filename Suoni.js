@@ -1,6 +1,7 @@
 var listener = new THREE.AudioListener();
 var audioLoader = new THREE.AudioLoader();
 
+
 s_camminata = new THREE.Audio( listener );
 audioLoader.load( 'sounds/camminata.mp3', function( buffer ) {
     s_camminata.setBuffer( buffer );
@@ -91,3 +92,18 @@ audioLoader.load( 'sounds/sforzo.mp3', function( buffer ) {
     s_sforzo.setVolume( 0.5 );
 });
 
+var suoni = [];
+suoni.push(
+    s_camminata,
+    s_camminata2,
+    s_sforzo1,
+    s_striscia,
+    s_whoah,
+    s_wow,
+    s_sospiro,
+    s_marcia_musicale,
+    s_ohoh,
+    s_fallimento,
+    s_fallimento2,
+    s_sforzo
+)

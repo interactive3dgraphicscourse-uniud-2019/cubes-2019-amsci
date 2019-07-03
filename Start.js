@@ -35,12 +35,13 @@ function Start() {
     dirLight.target.position.set(10,10,20);
     scene.add( dirLight , dirLight.target);
     dirLight.castShadow = true;
-    dirLight.shadow.mapSize.width = 1024
-    dirLight.shadow.mapSize.height = 1024;
+    dirLight.shadow.mapSize.width = 2048
+    dirLight.shadow.mapSize.height = 2048;
     dirLight.shadow.camera.left = -30;
     dirLight.shadow.camera.bottom = -30;
     dirLight.shadow.camera.right = 30;
     dirLight.shadow.camera.top = 30;
+    dirLight.shadow.radius = 1;
 
 
     // GROUND
@@ -59,21 +60,7 @@ function Start() {
     } ); // per catturare i fotogrammi
 }
 
-document.addEventListener('keydown', ReadInput);
-function ReadInput(input){
-    if(input.key == " "){
-        capturer.start();
-    }
-    if(input.key == "Enter"){
-        capturer.stop();
-        capturer.save();
-    }
-    if(input.key == "s"){
-        cancelAnimationFrame( ID_animazione );
-    }
-}
-
-var time, inizio=Date.now();
+var time, inizio;
 var ID_animazione = null;
 
 function Update() {
@@ -84,5 +71,44 @@ function Update() {
     }
 }
 
+document.addEventListener('keydown', ReadInput);
+var pausa_flag = 1;
+var inizio_pausa = -1;
+var interrotti = [];
+function ReadInput(input){
+    // if(input.key == " "){
+    //     capturer.start();
+    // }
+    // if(input.key == "Enter"){
+    //     capturer.stop();
+    //     capturer.save();
+    // }
+    if(input.key == "p"){
+        if(pausa_flag > 0){
+            cancelAnimationFrame( ID_animazione );
+            for(var j=0; j<suoni.length; j++) if(suoni[j].isPlaying) {
+                suoni[j].pause();
+                interrotti.push(j);
+            }
+            inizio_pausa = Date.now();
+        } else {
+            var tempo_pausa = Date.now() - inizio_pausa;
+            inizio += tempo_pausa;
+            for(var j=0; j<interrotti.length; j++) suoni[interrotti[j]].play();
+            interrotti = [];
+            Update();
+        }
+        pausa_flag *= -1;
+    }
+    if(input.key == "s"){
+        termina.avviato = true;
+    }
+}
+
+document.getElementById("play").addEventListener("click", function () {
+    inizio = Date.now();
+    Update();
+    document.getElementById("play").style.visibility = "hidden";
+});
+
 Start();
-Update();
