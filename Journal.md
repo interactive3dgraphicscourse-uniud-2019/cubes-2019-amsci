@@ -6,3 +6,6 @@
 - Costruito l'elenco degli eventi ed eliminata la sequenza temporale
 - Aggiunti i suoni
 - Aggiunte le scritte
+- Aggiunta texture al cubo grande
+- Aggiunto pulsante Play e tasto di pausa
+- Aggiunta heightmap per la siepe
